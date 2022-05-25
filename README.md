@@ -36,7 +36,18 @@
    --data-raw '{
    "url": "http://job4j.ru:8888/TrackStudio/staticframeset.html#253134"
    }'
-
+   
 4. Получение статистики:
    curl --location --request GET 'http://localhost:8080/statistic' \
    --header 'Authorization: Bearer your_token\
+   
+
+Запуск с помощью Kubernetes
+
+1. Запуск кластера: minikube start
+2. Создаем secret: kubectl apply -f postgresdb-secret.yml
+3. Вносим config в кластер: kubectl apply -f postgresdb-configmap.yml
+4. Разворачиваем postgresdb: kubectl apply -f postgresdb-deployment.yml
+5. Разворачиваем spring: kubectl apply -f spring-deployment.yml
+6. Команда возвращает нам URL, по которому мы можем подключиться к сервису из вне.
+   minikube service spring-boot-service
