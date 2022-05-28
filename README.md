@@ -17,13 +17,22 @@
 
 ### Запуск с помощью docker:
 
-1. Собрать сервис: mvn install
-2. Собрать образ: docker build -t shortcut .
-3. Запустить docker-compose: docker-compose up
+#### 1. Собрать сервис: 
+````
+mvn install
+````
+#### 2. Собрать образ:
+````
+docker build -t shortcut .
+````
+#### 3. Запустить docker-compose: 
+````
+docker-compose up
+````
 
-### Использование через REST API:
+## Использование через REST API:
 
-## 1. Регистрация:
+### 1. Регистрация:
 ````
    curl --location --request POST 'http://localhost:8080/registration' \
    --header 'Content-Type: application/json' \
@@ -32,7 +41,7 @@
    }'
 ````
    
-## 2. Получение токена:
+### 2. Получение токена:
 ````
    curl --location --request POST 'http://localhost:8080/login' \
    --header 'Accept: application/json' \
@@ -43,7 +52,7 @@
    }'
 ````   
 
-## 3. Конвертация url:
+### 3. Конвертация url:
 ````
    curl --location --request POST 'http://localhost:8080/convert' \
    --header 'Authorization: Bearer your_token\
@@ -53,7 +62,7 @@
    }'
 ````   
    
-## 4. Получение статистики:
+### 4. Получение статистики:
 ````
    curl --location --request GET 'http://localhost:8080/statistic' \
    --header 'Authorization: Bearer your_token\
@@ -63,10 +72,27 @@
 
 ## Запуск с помощью Kubernetes:
 
-1. Запуск кластера: minikube start
-2. Создаем secret: kubectl apply -f postgresdb-secret.yml
-3. Вносим config в кластер: kubectl apply -f postgresdb-configmap.yml
-4. Разворачиваем postgresdb: kubectl apply -f postgresdb-deployment.yml
-5. Разворачиваем spring: kubectl apply -f spring-deployment.yml
-6. Команда возвращает нам URL, по которому мы можем подключиться к сервису из вне.
-   minikube service spring-boot-service
+#### 1. Запуск кластера: 
+````
+minikube start 
+````
+#### 2. Создаем secret: 
+````
+kubectl apply -f postgresdb-secret.yml
+````
+#### 3. Вносим config в кластер:
+````
+kubectl apply -f postgresdb-configmap.yml
+````
+#### 4. Разворачиваем postgresdb: 
+````
+kubectl apply -f postgresdb-deployment.yml
+````
+#### 5. Разворачиваем spring: 
+````
+kubectl apply -f spring-deployment.yml
+````
+#### 6. Команда возвращает нам URL, по которому мы можем подключиться к сервису из вне.
+````
+minikube service spring-boot-service
+````
