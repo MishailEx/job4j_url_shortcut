@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Mihail
+      changes:
+        - createTable:
+            tableName: site
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: site
+                  type: varchar(200)
+              - column:
+                  name: login
+                  type: varchar(200)
+              - column:
+                  name: password
+                  type: varchar(200)
+        - createTable:
+            tableName: url_link
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: url
+                  type: varchar(200)
+              - column:
+                  name: code
+                  type: varchar(200)
+              - column:
+                  name: total
+                  type: int
+              - column:
+                  name: site_id
+                  type: int
+                  constraints:
+                    foreignKeyName: site(id)
+                    nullable: false

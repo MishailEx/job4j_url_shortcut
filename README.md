@@ -1,4 +1,4 @@
-Функционал
+Функционал:
 
 1. Регистрация сайта с выдачей login и password
 2. Авторизация.
@@ -6,20 +6,30 @@
 4. Переадресация. Выполняется без авторизации.
 5. Вывод статистики по запросам ссылок.
 
-Запуск с помощью docker.
+Используемые технологии:
+
+1. Java 16
+2. Spring Boot 2
+3. Spring Security & JWT authorization
+4. Spring Data JPA 
+5. PostgreSQL
+6. Liquibase
+
+Запуск с помощью docker:
 
 1. Собрать сервис: mvn install
 2. Собрать образ: docker build -t shortcut .
 3. Запустить docker-compose: docker-compose up
 
-Использование через REST API
+Использование через REST API:
+
 1. Регистрация:
    curl --location --request POST 'http://localhost:8080/registration' \
    --header 'Content-Type: application/json' \
    --data-raw '{
    "site": "google.com"
    }'
-
+   
 2. Получение токена:
    curl --location --request POST 'http://localhost:8080/login' \
    --header 'Accept: application/json' \
@@ -38,11 +48,13 @@
    }'
    
 4. Получение статистики:
+   ""
    curl --location --request GET 'http://localhost:8080/statistic' \
    --header 'Authorization: Bearer your_token\
+   ""
    
 
-Запуск с помощью Kubernetes
+Запуск с помощью Kubernetes:
 
 1. Запуск кластера: minikube start
 2. Создаем secret: kubectl apply -f postgresdb-secret.yml
